@@ -1,0 +1,31 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+	"organizeImports": {
+		"enabled": true,
+		"ignore": [
+			"./public",
+			"./dist",
+			"./node_modules",
+			"./bun.lockb",
+			"./package-lock.json",
+			"./.tmp"
+		]
+	},
+	"formatter": {
+		"ignore": [
+			"public",
+			"dist",
+			"node_modules",
+			"bun.lockb",
+			"package-lock.json",
+			".tmp"
+		]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		},
+		"ignore": ["public", "dist", "node_modules", ".tmp"]
+	}
+}

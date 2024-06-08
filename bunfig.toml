@@ -1,10 +1,19 @@
-preload = ['./tailwindcss-bun.ts']
+preload = ['./.config/plugins/index.ts']
 jsx = "react-jsx"
 jsxImportSource = "react"
-
-[run]
-bun = true
-shell = "system"
+publicDir = "./public"
+[define]
+"Bun.origin" = "'http://0.0.0.0:8080'"
+"import.meta.env.SSR" = "true"
 
 [loader]
-".css" = "css"
+".css" = "file"
+".tsx" = "tsx"
+".ts" ="ts"
+
+[debug]
+editor = "/usr/local/bin/zed"
+
+[install]
+auto = "auto"
+dev = true

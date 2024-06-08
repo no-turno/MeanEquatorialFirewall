@@ -1,14 +1,9 @@
-import type React from "react";
-import css from "./app.css";
+import { renderToStaticMarkup } from "react-dom/server";
 
-export default function Layout({ children }: { children: React.ReactElement }) {
-	return (
-		<html>
-			<head>
-				<title>app</title>
-				<style>{css}</style>
-			</head>
-			<body>{children}</body>
-		</html>
-	);
+export default function Layout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	return <html>{children}</html>;
 }
