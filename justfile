@@ -1,5 +1,3 @@
-set shell := ["nu", "-c"]
-
 dev:
     bun run --port=8080 --watch ./server.tsx
 

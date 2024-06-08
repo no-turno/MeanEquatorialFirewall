@@ -6,4 +6,4 @@ const router = createRouter();
 
 console.log(router);
 
-hydrateRoot(document.getElementById('root')!, <Main/>)
+hydrateRoot(document.getElementById("root")!, <Main />);

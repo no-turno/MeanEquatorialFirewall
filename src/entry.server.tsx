@@ -1,7 +1,5 @@
 import type { Context } from "elysia";
-import {
-	renderToReadableStream,
-} from "react-dom/server";
+import { renderToReadableStream } from "react-dom/server";
 import Layout from "./_layout";
 import { type JSX } from "react";
 import type { FileSystemRouter } from "bun";
@@ -53,11 +51,11 @@ export async function handleRequest(
 			</body>
 		</Layout>,
 		{
-			bootstrapModules: ['/_dist/main.js']
-		}
+			bootstrapModules: ["/_dist/main.js"],
+		},
 	);
 
 	await html.allReady;
 
-	return new Response(html)
+	return new Response(html);
 }

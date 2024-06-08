@@ -5,9 +5,7 @@ import { staticPlugin } from "@elysiajs/static";
 import { cookie } from "@elysiajs/cookie";
 
 await Bun.build({
-	entrypoints: [
-		'src/entry.client.tsx'
-	],
+	entrypoints: ["src/entry.client.tsx"],
 	format: "esm",
 	target: "browser",
 	loader: {
@@ -15,9 +13,9 @@ await Bun.build({
 		".css": "file",
 		".ts": "ts",
 	},
-	outdir: 'dist/client',
-	naming: 'main.js'
-})
+	outdir: "dist/client",
+	naming: "main.js",
+});
 
 export const setup = () =>
 	new Elysia()
@@ -75,7 +73,7 @@ export const app = setup()
 	.get(
 		"*",
 		async (ctx) => {
-			return  await handleRequest(ctx);
+			return await handleRequest(ctx);
 		},
 		{
 			afterHandle: (ctx) => {
@@ -83,7 +81,7 @@ export const app = setup()
 			},
 		},
 	)
-	.get('/_dist/main.js', () => Bun.file('dist/client/main.js'))
+	.get("/_dist/main.js", () => Bun.file("dist/client/main.js"))
 
 	.listen(
 		{
