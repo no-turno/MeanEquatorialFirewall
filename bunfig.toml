@@ -1,0 +1,10 @@
+preload = ['./tailwindcss-bun.ts']
+jsx = "react-jsx"
+jsxImportSource = "react"
+
+[run]
+bun = true
+shell = "system"
+
+[loader]
+".css" = "css"
