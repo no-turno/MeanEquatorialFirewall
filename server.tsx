@@ -2,9 +2,22 @@ import { cors } from "@elysiajs/cors";
 import { Elysia } from "elysia";
 import { createRouter, handleRequest } from "./src/entry.server";
 import { staticPlugin } from "@elysiajs/static";
-import { html } from "@elysiajs/html";
 import { cookie } from "@elysiajs/cookie";
-import { Stream } from "@elysiajs/stream";
+
+await Bun.build({
+	entrypoints: [
+		'src/entry.client.tsx'
+	],
+	format: "esm",
+	target: "browser",
+	loader: {
+		".tsx": "tsx",
+		".css": "file",
+		".ts": "ts",
+	},
+	outdir: 'dist/client',
+	naming: 'main.js'
+})
 
 export const setup = () =>
 	new Elysia()
@@ -19,10 +32,6 @@ export const setup = () =>
 				directive: "public",
 			}),
 		)
-		// .use(html({
-		// 	autoDetect: true,
-		// 	autoDoctype: true,
-		// }))
 		.use(cookie())
 		.onStart(async ({ decorator }) => {
 			const router = decorator.createRouter();
@@ -66,8 +75,7 @@ export const app = setup()
 	.get(
 		"*",
 		async (ctx) => {
-			const _html = await handleRequest(ctx);
-			return new Stream(_html);
+			return  await handleRequest(ctx);
 		},
 		{
 			afterHandle: (ctx) => {
@@ -75,6 +83,7 @@ export const app = setup()
 			},
 		},
 	)
+	.get('/_dist/main.js', () => Bun.file('dist/client/main.js'))
 
 	.listen(
 		{

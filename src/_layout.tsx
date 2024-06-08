@@ -1,4 +1,3 @@
-import { renderToStaticMarkup } from "react-dom/server";
 
 export default function Layout({
 	children,

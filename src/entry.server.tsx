@@ -1,7 +1,6 @@
 import type { Context } from "elysia";
 import {
 	renderToReadableStream,
-	type ReactDOMServerReadableStream,
 } from "react-dom/server";
 import Layout from "./_layout";
 import { type JSX } from "react";
@@ -53,9 +52,12 @@ export async function handleRequest(
 				<RouteComponent />
 			</body>
 		</Layout>,
+		{
+			bootstrapModules: ['/_dist/main.js']
+		}
 	);
 
 	await html.allReady;
 
-	return html as ReactDOMServerReadableStream;
+	return new Response(html)
 }
