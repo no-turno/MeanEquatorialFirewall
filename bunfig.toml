@@ -1,13 +1,12 @@
 preload = ['./.config/plugins/index.ts']
 jsx = "react-jsx"
 jsxImportSource = "react"
-publicDir = "./public"
 
 [define]
-"Bun.origin" = "'http://0.0.0.0:8080'"
+"Bun.origin" = "'http://127.0.0.1:3000/'"
 "import.meta.env.SSR" = "true"
 
 [loader]
-".css" = "file"
+".css" = "css"
 ".tsx" = "tsx"
 ".ts" ="ts"
